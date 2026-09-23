@@ -2,9 +2,14 @@
   "name": "dwssr-2026b",
   "version": "0.0.0",
   "private": true,
+  "type":"module", 
   "scripts": {
     "start": "DEBUG=dwssr-2026b:* node ./server/bin/www",
+<<<<<<< HEAD
     "greet": "echo 'Hola mundo'"
+=======
+    "great": "echo 'hola mundo'"
+>>>>>>> dev
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
