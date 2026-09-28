@@ -1,26 +1,34 @@
 //funcion para manejar errores en la aplicacion 
-//❌var createError = require('http-errors');
-import createError from 'http-errors'
+import createError from 'http-errors';
 
 //importar framework express
-//❌var express = require('express');
-import express from 'espress'
+import express from 'express';
 
 //importar modulos para manejar rutas 
-//❌var path = require('path');
-import path from 'node:path'
+import path from 'node:path';
 
 //importar modulos para manejar cookies
-//❌var cookieParser = require('cookie-parser');
 import cookieParser from 'cookie-parser'
+
 //importar modulos para manejar logs
-//❌var logger = require('morgan');
 import logger from 'morgan'
+ //importanto biblioteca de debug
+ import createDebug from 'debug' //🎉
+//imports para crear dirname
+import { fileURLToPath } from 'node:url'
+import { dirname } from 'node:path';
+//creacion del objeto debug
+const debug = createDebug('dwssr-2026b:server');//🎉
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
+//creando las variables
+const  __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 var app = express();
+
+//importar las rutas de la aplicacion
+import indexRouter from './routes/index.js';
+import usersRouter from './routes/users.js';
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -51,4 +59,4 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
+export default app;
