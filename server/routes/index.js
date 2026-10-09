@@ -1,10 +1,12 @@
-import express from 'express';  
+import express from 'express'; 
 const router = express.Router();
+
+let counter = 0;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.send('lista de usuarios');
+  counter++;
+  res.render('index', { counter: counter });
 });
 
-//module.exports = router;
- export default router;
+export default router;

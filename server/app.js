@@ -1,4 +1,4 @@
-//funcion para manejar errores en la aplicacion 
+//funcion para mejerar errores en la aplicación
 import createError from 'http-errors';
 
 //importar framework express

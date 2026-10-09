@@ -1,0 +1,13 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #f8f9fa;
+}
+
+/* Agregamos una clase personalizada para "HOLA MAMARRE" */
+.mamarre {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #ff007f; /* Color rosa neón */
+  letter-spacing: 1px;
+}
