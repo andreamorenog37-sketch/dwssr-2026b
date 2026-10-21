@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clasificador de Comentarios (Simulación)</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #f4f4f9;
+    }
+    .card {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      padding: 10px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .resultado {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+    .positivo { background-color: #d4edda; color: #155724; }
+    .negativo { background-color: #f8d7da; color: #721c24; }
+    .neutral { background-color: #e2e3e5; color: #383d41; }
+    .aviso {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #6c757d;
+      font-style: italic;
+      border-top: 1px solid #ddd;
+      padding-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h2>Clasificador de Comentarios</h2>
+    <label for="comentario">Ingresa tu comentario:</label>
+    <textarea id="comentario" placeholder="Escribe aquí tu opinión..."></textarea>
+    
+    <button onclick="analizarComentario()">Analizar comentario</button>
+
+    <div id="resultado" class="resultado" style="display: none;"></div>
+
+    <div class="aviso">
+      Nota: Este programa es una simulación basada en palabras clave y no constituye un modelo real de Machine Learning entrenado.
+    </div>
+  </div>
+
+  <script>
+    function analizarComentario() {
+      // 1. Obtener el texto y convertirlo a minúsculas para ignorar Mayúsculas/Minúsculas
+      const texto = document.getElementById('comentario').value.toLowerCase();
+      const divResultado = document.getElementById('resultado');
+
+      // 2. Definir arreglos de palabras clave
+      const palabrasPositivas = ['excelente', 'bueno', 'increíble', 'increible'];
+      const palabrasNegativas = ['malo', 'terrible', 'pésimo', 'pesimo'];
+
+      // 3. Evaluar coincidencias
+      const esPositivo = palabrasPositivas.some(palabra => texto.includes(palabra));
+      const esNegativo = palabrasNegativas.some(palabra => texto.includes(palabra));
+
+      divResultado.style.display = 'block';
+
+      // 4. Clasificar resultado
+      if (esPositivo && !esNegativo) {
+        divResultado.textContent = 'Clasificación: Comentario Positivo';
+        divResultado.className = 'resultado positivo';
+      } else if (esNegativo && !esPositivo) {
+        divResultado.textContent = 'Clasificación: Comentario Negativo';
+        divResultado.className = 'resultado negativo';
+      } else {
+        divResultado.textContent = 'Comentario neutral o no identificado';
+        divResultado.className = 'resultado neutral';
+      }
+    }
+  </script>
+
+</body>
+</html>
