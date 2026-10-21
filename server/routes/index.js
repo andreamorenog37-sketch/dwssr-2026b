@@ -4,7 +4,7 @@ const router = express.Router();
 let counter = 0;
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res, _next) {
   counter++;
   res.render('index', { counter: counter });
 });

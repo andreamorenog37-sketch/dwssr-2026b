@@ -9,7 +9,11 @@
     "dev:vite": "vite",
     "dev:all": "concurrently \"npm run dev\" \"npm run dev:vite\"",
     "build": "vite build",
-    "preview": "npm run build && npm run start"
+    "preview": "npm run build && npm run start",
+    "lint": "",
+    "name":"", 
+    "name":"", 
+    "name":""
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",

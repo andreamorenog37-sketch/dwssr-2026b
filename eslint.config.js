@@ -22,14 +22,14 @@ export default defineConfig([
         ...globals.node} } },
 
   //2.1 config baack-end
-  { files: ["vite.config.js"], 
+  { files: ["server/**/*.{js,mjs}"], 
     plugins: { js }, 
     extends: ["js/recommended"], 
     languageOptions: { 
       globals:{
         ecmaVersion: "latest",
         sourceType: "module",
-        ...globals.node} } },
+        ...globals.node} },
 
         rules : {
           "no-unused-vars": ["error",
@@ -56,7 +56,6 @@ export default defineConfig([
       globals:{
         ecmaVersion: "latest",
         sourceType: "module",
-        (property) 'browser': Globals.browser} } },
-        ...globals.browser
-      } } },
+        ...globals.browser} } },
+      
 ]);
