@@ -3,59 +3,68 @@ import globals from "globals";
 import { defineConfig } from "eslint/config";
 
 export default defineConfig([
-  // ignora los build 
+  // 1. Ignorar archivos/carpetas
   {
-    ignores :[
-      "dist/**",//ignora carpeta de dist 
-      "node_"
+    ignores: [
+      "dist/**",
+      "node_modules/**" // Corregido: "node_" incompleto
     ]
   },
- 
-  //2 config de vite 
-  { files: ["vite.config.js"], 
-    plugins: { js }, 
-    extends: ["js/recommended"], 
-    languageOptions: { 
-      globals:{
-        ecmaVersion: "latest",
-        sourceType: "module",
-        ...globals.node} } },
 
-  //2.1 config baack-end
-  { files: ["server/**/*.{js,mjs}"], 
-    plugins: { js }, 
-    extends: ["js/recommended"], 
-    languageOptions: { 
-      globals:{
-        ecmaVersion: "latest",
-        sourceType: "module",
-        ...globals.node} },
+  // 2. Reglas globales para JS recomendadas
+  js.configs.recommended,
 
-        rules : {
-          "no-unused-vars": ["error",
-             { "argsIgnorePattern": "^_" }]
-        }
+  // 3. Configuración de Vite
+  {
+    files: ["vite.config.js"],
+    languageOptions: {
+      ecmaVersion: "latest",
+      sourceType: "module",
+      globals: {
+        ...globals.node
+      }
+    }
   },
 
+  // 4. Configuración del Back-end
+  {
+    files: ["server/**/*.{js,mjs}"],
+    languageOptions: {
+      ecmaVersion: "latest",
+      sourceType: "module",
+      globals: {
+        ...globals.node
+      }
+    },
+    rules: {
+      "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }]
+    }
+  },
 
-  //3 config front-end
-  { files: ["src/**/*.{js,mjs}"], 
-    plugins: { js }, 
-    extends: ["js/recommended"], 
-    languageOptions: { 
-      globals:{
-        ecmaVersion: "latest",
-        sourceType: "module",
-        ...globals.browser} } },
+  // 5. Configuración del Front-end y archivos src/
+  {
+    files: ["src/**/*.{js,mjs}"],
+    languageOptions: {
+      ecmaVersion: "latest",
+      sourceType: "module",
+      globals: {
+        ...globals.browser
+      }
+    },
+    rules: {
+      "no-console": ["warn", { allow: ["warn", "error", "info"] }]
+    }
+  },
 
-  //4opcional si hay js en public
-  { files: ["public/**/*.{js,mjs}"], 
-    plugins: { js }, 
-    extends: ["js/recommended"], 
-    languageOptions: { 
-      globals:{
-        ecmaVersion: "latest",
-        sourceType: "module",
-        ...globals.browser} } },
-      
+  // 6. Configuración opcional para archivos en public/
+  {
+    files: ["public/**/*.{js,mjs}"],
+    languageOptions: {
+      ecmaVersion: "latest",
+      sourceType: "module",
+      globals: {
+        ...globals.browser
+      }
+    }
+  }
 ]);

@@ -20,3 +20,19 @@ El participante identifica los frameworks más utilizados en la industria para e
 | ⚡ | `perf` | Mejoras de rendimiento o optimización de código. |
 | 🧪 | `test` | Adición o corrección de pruebas unitarias o de integración. |
 | 🔧 | `chore` | Tareas de mantenimiento, actualización de dependencias o scripts de compilación. |
+
+
+
+#instalacion de la guia de estilo de airbnb 
+
+
+para obtener instlara la guia de estilo de airbnb necesitamos tener las siguientes dependencias ;
+
+- ⭐⭐⭐`@eslint/eslintrc`
+- `@eslint/js permite a eslint`
+- `eslint`
+- ⭐⭐⭐`eslint-config-airbnb-base` contiene las definiciones basicas de la guia de estilos de airbnb para javascrpit 
+
+-`eslint-config-prettier` sirve para acoplar eslint con prettier 
+- ⭐⭐⭐`eslint-pluggin-import` sirve para poder iportar configuraciones 
+- `globals`  tiene varias globals oimportantes en la plataforma 
