@@ -29,7 +29,7 @@ logger.debug("🪓 Creando backend");
 const app = express();
 
 // View engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'server/views'));
 app.set('view engine', 'hbs');
 
 // Register Helper de Handlebars
@@ -64,7 +64,10 @@ app.use((req, res, next) => {
 app.use((err, req, res, _next) => {
   // Set locals, only providing error in development
   res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+  res.locals.error = req.app.get('env') === 'development' ? {
+    status: err.status || 500,
+    stack: err.stack
+  } : {};
 
   // Render the error page
   res.status(err.status || 500);
